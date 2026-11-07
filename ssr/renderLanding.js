@@ -1108,8 +1108,8 @@ function renderLandingPage(store, query = {}) {
     </div>
   </footer>
 
-  <!-- Floating WhatsApp CTA Button (Telegram/WhatsApp Direct Contact) -->
-  <a href="https://wa.me/201090901500?text=${encodeURIComponent(isAr ? 'مرحباً، أود الاستفسار عن كود خصم وعروض هوستنجر' : 'Hello, I would like to inquire about Hostinger discounts')}" 
+  <!-- Floating WhatsApp CTA Button (WhatsApp Direct Contact via Username) -->
+  <a href="https://wa.me/y9090oussef?text=${encodeURIComponent(isAr ? 'مرحباً، أود الاستفسار عن كود خصم وعروض هوستنجر' : 'Hello, I would like to inquire about Hostinger discounts')}" 
      data-wa-user="y9090oussef"
      target="_blank" 
      rel="noopener noreferrer" 
