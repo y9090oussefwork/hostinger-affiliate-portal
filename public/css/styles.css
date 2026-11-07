@@ -557,22 +557,29 @@ button {
    3.5. DEDICATED LIVE COUNTDOWN URGENCY SECTION
    ========================================================================== */
 .h-countdown-section {
-  padding: 0 0 36px;
+  padding: 36px 0 16px;
   position: relative;
   z-index: 20;
-  margin-top: -24px;
+  margin-top: 0;
+  background: #ffffff;
 }
 
 .h-countdown-card {
-  background: linear-gradient(135deg, #180d3d 0%, #0e0724 60%, #20104a 100%);
-  border: 1px solid rgba(163, 133, 255, 0.32);
+  background-color: #0d0822;
+  background-image: 
+    radial-gradient(ellipse 70% 50% at 85% 20%, rgba(103, 61, 230, 0.42) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 15% 80%, rgba(255, 59, 92, 0.18) 0%, transparent 60%),
+    radial-gradient(rgba(163, 133, 255, 0.28) 1.3px, transparent 1.3px);
+  background-size: 100% 100%, 100% 100%, 20px 20px;
+  background-repeat: no-repeat, no-repeat, repeat;
+  border: 1px solid rgba(163, 133, 255, 0.35);
   border-radius: 22px;
-  padding: 26px 36px;
+  padding: 28px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  box-shadow: 0 16px 48px -8px rgba(10, 5, 24, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 16px 40px -10px rgba(10, 5, 24, 0.3), 0 0 20px rgba(103, 61, 230, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -601,7 +608,7 @@ button {
   background: rgba(255, 59, 92, 0.16);
   border: 1px solid rgba(255, 59, 92, 0.38);
   color: #ff8ca2;
-  padding: 3px 12px;
+  padding: 4px 12px;
   border-radius: 999px;
   font-size: 11.5px;
   font-weight: 800;
@@ -629,7 +636,7 @@ button {
 
 .hcc-sub {
   font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   margin: 0;
 }
@@ -649,11 +656,11 @@ button {
 }
 
 .hcc-digit-box {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(163, 133, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(163, 133, 255, 0.3);
   border-radius: 14px;
   padding: 10px 14px;
-  min-width: 66px;
+  min-width: 68px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -663,8 +670,8 @@ button {
 }
 
 .hcc-digit-box.hcc-sec-box {
-  border-color: rgba(255, 59, 92, 0.45);
-  background: rgba(255, 59, 92, 0.12);
+  border-color: rgba(255, 59, 92, 0.5);
+  background: rgba(255, 59, 92, 0.15);
   box-shadow: inset 0 1px 0 rgba(255, 59, 92, 0.25), 0 6px 16px rgba(255, 59, 92, 0.15);
 }
 
@@ -685,7 +692,7 @@ button {
 .hcc-lbl {
   font-size: 10px;
   font-weight: 750;
-  color: rgba(255, 255, 255, 0.55);
+  color: #d6c8ff;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-top: 4px;
@@ -739,8 +746,8 @@ button {
 
 @media (max-width: 980px) {
   .h-countdown-section {
-    margin-top: -12px;
-    padding: 0 0 28px;
+    margin-top: 0;
+    padding: 24px 0 12px;
   }
   .h-countdown-card {
     flex-direction: column;
