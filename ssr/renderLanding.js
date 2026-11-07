@@ -67,17 +67,17 @@ function renderDirectoryItemHtml(cat, store, lang) {
   }
 
   return `
-  <a href="/go?cat=${escapeHtml(cat.id)}&type=category&lang=${lang}" target="_blank" rel="sponsored noopener" class="h-dir-item">
+  <a href="/${lang}/${escapeHtml(cat.id)}" class="h-dir-item">
     <div class="hdi-left">
       <span class="hdi-icon">${getCategoryIconSvg(cat.id)}</span>
       <div class="hdi-meta">
-        <strong>${escapeHtml(isAr ? cat.nameAr : cat.nameEn)}</strong>
+        <strong title="${escapeHtml(isAr ? cat.nameAr : cat.nameEn)}">${escapeHtml(isAr ? cat.nameAr : cat.nameEn)}</strong>
         <span>${isAr ? `يبدأ من US$${minPrice}${unit}` : `From US$${minPrice}${unit}`}</span>
       </div>
     </div>
     <div class="hdi-right">
       <span class="hdi-badge">${escapeHtml(isAr ? cat.badgeAr : cat.badgeEn)}</span>
-      <span class="hdi-arrow" aria-hidden="true">↗</span>
+      <span class="hdi-arrow" aria-hidden="true">←</span>
     </div>
   </a>`;
 }
@@ -925,16 +925,20 @@ function renderLandingPage(store, query = {}) {
   <footer class="h-footer">
     <div class="h-container">
       <div class="h-footer-inner">
-        <div class="hf-left">
-          <strong>HOSTINGER</strong>
-          <span class="hf-partner-tag">${isAr ? "بوابة عروض الشركاء المعتمدين" : "Authorized Affiliate Partner Portal"}</span>
-          <span>• ${isAr ? "خصم +20% مُفعّل عبر الروابط المباشرة" : "+20% Extra Off Active via Direct Links"}</span>
+        <div class="hf-brand-col">
+          <div class="hf-brand-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h5v7h6V3h5v18h-5v-7H9v7H4V3z"/></svg>
+            <strong>HOSTINGER</strong>
+            <span class="hf-partner-tag">${isAr ? "بوابة عروض الشركاء المعتمدين" : "Authorized Affiliate Partner Portal"}</span>
+          </div>
+          <p class="hf-brand-sub">${isAr ? "خصم إضافي 20% مُفعّل تلقائياً عبر روابط الشراكة المباشرة لجميع باقات هوستنجر الرسمية." : "Extra 20% partner discount automatically applied via direct links across all official Hostinger plans."}</p>
         </div>
+
         <div class="hf-right">
           <button type="button" class="hf-legal-btn" data-legal="privacy">${isAr ? "سياسة الخصوصية" : "Privacy Policy"}</button>
           <button type="button" class="hf-legal-btn" data-legal="terms">${isAr ? "شروط الاستخدام" : "Terms of Use"}</button>
           <button type="button" class="hf-legal-btn" data-legal="disclosure">${isAr ? "إفصاح الشركاء" : "Affiliate Disclosure"}</button>
-          <a href="/go?type=general&lang=${lang}" target="_blank" rel="sponsored noopener">${isAr ? "موقع Hostinger الرسمي بالخصم ↗" : "Official Hostinger Site (+20% Off) ↗"}</a>
+          <a href="/go?type=general&lang=${lang}" target="_blank" rel="sponsored noopener" class="hf-site-link">${isAr ? "موقع Hostinger الرسمي بالخصم ↗" : "Official Hostinger Site (+20% Off) ↗"}</a>
         </div>
       </div>
 
@@ -945,8 +949,34 @@ function renderLandingPage(store, query = {}) {
             : "Affiliate & Advertising Disclosure: This website operates as an independent promotional partner portal participating in the official Hostinger Referral & Affiliate Program. When you purchase by opening the full partner links on this page, you automatically receive an extra referral discount (up to 20% off eligible plans — activated exclusively via the link) and we may earn a partner commission at no additional cost to you. All trademarks and brand names belong to Hostinger International Ltd. All checkouts, billing, and the 30-day money-back guarantee are processed directly on Hostinger's official website."
         }
       </div>
+
+      <!-- Designer & Developer Credit -->
+      <div class="hf-dev-credit">
+        <span>${isAr ? "تمت البرمجة والتطوير بواسطة" : "Designed & Developed by"}</span>
+        <a href="https://youssefk.com" target="_blank" rel="noopener" class="hf-dev-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <strong>youssef khalaf</strong>
+          <em>youssefk.com ↗</em>
+        </a>
+      </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp CTA Button (Telegram/WhatsApp Direct Contact) -->
+  <a href="https://wa.me/201090901500?text=${encodeURIComponent(isAr ? 'مرحباً، أود الاستفسار عن كود خصم وعروض هوستنجر' : 'Hello, I would like to inquire about Hostinger discounts')}" 
+     data-wa-user="y9090oussef"
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="floating-whatsapp-btn" 
+     id="floating-whatsapp"
+     aria-label="تواصل عبر واتساب" 
+     title="${isAr ? 'تواصل معنا مباشرة عبر واتساب' : 'Chat with us on WhatsApp'}">
+    <div class="fwa-pulse"></div>
+    <svg class="fwa-icon" viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.06 7.23C8.88 7.23 8.58 7.3 8.33 7.57C8.08 7.85 7.38 8.5 7.38 9.83C7.38 11.16 8.35 12.44 8.49 12.63C8.63 12.82 10.4 15.54 13.12 16.71C13.77 16.99 14.28 17.16 14.67 17.29C15.33 17.5 15.93 17.47 16.41 17.4C16.94 17.32 18.04 16.73 18.27 16.08C18.5 15.43 18.5 14.88 18.43 14.76C18.36 14.64 18.18 14.57 17.91 14.43C17.64 14.3 16.31 13.65 16.06 13.56C15.82 13.47 15.64 13.42 15.46 13.69C15.28 13.97 14.77 14.57 14.61 14.75C14.46 14.94 14.31 14.96 14.04 14.83C13.77 14.69 12.91 14.41 11.89 13.5C11.1 12.79 10.56 11.91 10.41 11.65C10.26 11.39 10.39 11.24 10.53 11.11C10.65 11 10.8 10.8 10.94 10.64C11.08 10.48 11.12 10.36 11.21 10.18C11.3 10 11.26 9.85 11.19 9.72C11.12 9.59 10.59 8.29 10.37 7.76C10.15 7.24 9.93 7.31 9.77 7.3C9.62 7.3 9.44 7.23 9.06 7.23Z"/>
+    </svg>
+    <span class="fwa-tooltip">${isAr ? "تواصل واتساب (y9090oussef)" : "Chat on WhatsApp"}</span>
+  </a>
 
   <!-- Built-in Legal Modal (Privacy Policy, Terms, Affiliate Disclosure for Google Ads Compliance) -->
   <div class="h-legal-modal-backdrop" id="legal-modal" aria-hidden="true">
