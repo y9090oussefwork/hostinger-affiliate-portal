@@ -312,27 +312,39 @@
 
   function initCountdown() {
     if (store.countdown?.enabled === false) return;
-    const endIso = store.countdown?.endDate;
+    const endIso = store.countdown?.targetDate || store.countdown?.endDate;
     let endTime = endIso ? new Date(endIso).getTime() : 0;
     if (!endTime || isNaN(endTime) || endTime <= Date.now()) {
-      endTime = Date.now() + 9 * 86400000 + 5 * 3600000 + 37 * 60000;
+      const hours = Number(store.countdown?.evergreenHours) || 221;
+      endTime = Date.now() + hours * 3600 * 1000;
     }
 
     function tick() {
       const diff = Math.max(0, endTime - Date.now());
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor((diff % 86400000) / 3600000);
-      const m = Math.floor((diff % 3600000) / 60000);
-      const s = Math.floor((diff % 60000) / 1000);
+      const d = String(Math.floor(diff / 86400000)).padStart(2, "0");
+      const h = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, "0");
+      const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, "0");
+      const s = String(Math.floor((diff % 60000) / 1000)).padStart(2, "0");
 
+      // Top marquee ticker
       const dEl = document.getElementById("cd-days");
       const hEl = document.getElementById("cd-hours");
       const mEl = document.getElementById("cd-mins");
       const sEl = document.getElementById("cd-secs");
-      if (dEl) dEl.textContent = String(d).padStart(2, "0");
-      if (hEl) hEl.textContent = String(h).padStart(2, "0");
-      if (mEl) mEl.textContent = String(m).padStart(2, "0");
-      if (sEl) sEl.textContent = String(s).padStart(2, "0");
+      if (dEl) dEl.textContent = d;
+      if (hEl) hEl.textContent = h;
+      if (mEl) mEl.textContent = m;
+      if (sEl) sEl.textContent = s;
+
+      // Dedicated Countdown Urgency Section
+      const liveDEl = document.getElementById("live-cd-days");
+      const liveHEl = document.getElementById("live-cd-hours");
+      const liveMEl = document.getElementById("live-cd-mins");
+      const liveSEl = document.getElementById("live-cd-secs");
+      if (liveDEl) liveDEl.textContent = d;
+      if (liveHEl) liveHEl.textContent = h;
+      if (liveMEl) liveMEl.textContent = m;
+      if (liveSEl) liveSEl.textContent = s;
     }
     tick();
     setInterval(tick, 1000);

@@ -374,6 +374,18 @@ function renderLandingPage(store, query = {}) {
     )
     .join("\n");
 
+  const cdTargetIso = store.countdown?.targetDate || store.countdown?.endDate;
+  let cdTargetMs = cdTargetIso ? new Date(cdTargetIso).getTime() : 0;
+  if (!cdTargetMs || isNaN(cdTargetMs) || cdTargetMs <= Date.now()) {
+    const hours = Number(store.countdown?.evergreenHours) || 221;
+    cdTargetMs = Date.now() + hours * 3600 * 1000;
+  }
+  const cdDiff = Math.max(0, cdTargetMs - Date.now());
+  const ssrDays = String(Math.floor(cdDiff / 86400000)).padStart(2, "0");
+  const ssrHours = String(Math.floor((cdDiff % 86400000) / 3600000)).padStart(2, "0");
+  const ssrMins = String(Math.floor((cdDiff % 3600000) / 60000)).padStart(2, "0");
+  const ssrSecs = String(Math.floor((cdDiff % 60000) / 1000)).padStart(2, "0");
+
   return `<!DOCTYPE html>
 <html lang="${lang}" dir="${dir}">
 <head>
@@ -421,7 +433,7 @@ function renderLandingPage(store, query = {}) {
         <span class="m-sep">✦</span>
         <span>${isAr ? "دعم فني 24/7" : "24/7 support"}</span>
         <span class="m-sep">%</span>
-        <span>${isAr ? "ينتهي خلال:" : "Ends in:"} <strong id="cd-days">09</strong>d : <strong id="cd-hours">05</strong>h : <strong id="cd-mins">37</strong>m : <strong id="cd-secs">42</strong>s</span>
+        <span>${isAr ? "ينتهي خلال:" : "Ends in:"} <strong id="cd-days">${ssrDays}</strong>d : <strong id="cd-hours">${ssrHours}</strong>h : <strong id="cd-mins">${ssrMins}</strong>m : <strong id="cd-secs">${ssrSecs}</strong>s</span>
         <span class="m-sep">✦</span>
         <span>${isAr ? "أقوى عروض العام" : "Biggest deals of the year"}</span>
         <span class="m-sep">%</span>
@@ -596,6 +608,55 @@ function renderLandingPage(store, query = {}) {
       <div class="wf-guarantee">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
         <span id="hero-trust-stats">${escapeHtml(isAr ? store.hero.trustStatsAr : store.hero.trustStatsEn)}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3.5. DEDICATED LIVE COUNTDOWN URGENCY SECTION ==================== -->
+  <section class="h-countdown-section" id="countdown-section" style="${store.countdown?.enabled === false ? "display:none;" : ""}">
+    <div class="h-container">
+      <div class="h-countdown-card">
+        <div class="hcc-left">
+          <div class="hcc-badge">
+            <span class="hcc-fire">🔥</span>
+            <span>${escapeHtml(isAr ? (store.countdown?.badgeAr || "عروض الجمعة البيضاء • خصم حتى 88%") : (store.countdown?.badgeEn || "Biggest deals of the year • Up to 88% off"))}</span>
+          </div>
+          <h2 class="hcc-title">
+            ${isAr ? "ينتهي العرض الاستثنائي قريباً" : "Exclusive Partner Deals End Soon"}
+          </h2>
+          <p class="hcc-sub">
+            ${isAr ? "احصل على خصم إضافي 20% مُفعّل تلقائياً عبر الرابط لجميع خطط هوستنجر قبل انتهاء مهلة العرض." : "Secure your extra 20% referral partner discount applied automatically via direct links before the timer runs out."}
+          </p>
+        </div>
+
+        <div class="hcc-right">
+          <div class="hcc-timer" id="hero-countdown-timer">
+            <div class="hcc-digit-box">
+              <span class="hcc-val tabular" id="live-cd-days">${ssrDays}</span>
+              <span class="hcc-lbl">${isAr ? "أيام" : "Days"}</span>
+            </div>
+            <span class="hcc-colon">:</span>
+            <div class="hcc-digit-box">
+              <span class="hcc-val tabular" id="live-cd-hours">${ssrHours}</span>
+              <span class="hcc-lbl">${isAr ? "ساعات" : "Hours"}</span>
+            </div>
+            <span class="hcc-colon">:</span>
+            <div class="hcc-digit-box">
+              <span class="hcc-val tabular" id="live-cd-mins">${ssrMins}</span>
+              <span class="hcc-lbl">${isAr ? "دقائق" : "Minutes"}</span>
+            </div>
+            <span class="hcc-colon">:</span>
+            <div class="hcc-digit-box hcc-sec-box">
+              <span class="hcc-val tabular" id="live-cd-secs">${ssrSecs}</span>
+              <span class="hcc-lbl">${isAr ? "ثواني" : "Seconds"}</span>
+            </div>
+          </div>
+
+          <a href="#pricing-section" class="hcc-action-btn">
+            <span>${isAr ? "احصل على الخصم الآن" : "Claim Discount Now"}</span>
+            <span class="hcc-btn-arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>

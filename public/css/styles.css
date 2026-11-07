@@ -554,6 +554,252 @@ button {
 }
 
 /* ==========================================================================
+   3.5. DEDICATED LIVE COUNTDOWN URGENCY SECTION
+   ========================================================================== */
+.h-countdown-section {
+  padding: 0 0 36px;
+  position: relative;
+  z-index: 20;
+  margin-top: -24px;
+}
+
+.h-countdown-card {
+  background: linear-gradient(135deg, #180d3d 0%, #0e0724 60%, #20104a 100%);
+  border: 1px solid rgba(163, 133, 255, 0.32);
+  border-radius: 22px;
+  padding: 26px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 16px 48px -8px rgba(10, 5, 24, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.h-countdown-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff0055 0%, #673de6 50%, #00b074 100%);
+}
+
+.hcc-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.hcc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 59, 92, 0.16);
+  border: 1px solid rgba(255, 59, 92, 0.38);
+  color: #ff8ca2;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 800;
+  width: fit-content;
+}
+
+.hcc-fire {
+  font-size: 13px;
+  animation: hccFirePulse 1.5s infinite;
+}
+
+@keyframes hccFirePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.hcc-title {
+  font-size: 21px;
+  font-weight: 850;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.hcc-sub {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hcc-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.hcc-timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  direction: ltr; /* keep timer LTR: Days : Hours : Mins : Secs */
+}
+
+.hcc-digit-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(163, 133, 255, 0.28);
+  border-radius: 14px;
+  padding: 10px 14px;
+  min-width: 66px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hcc-digit-box.hcc-sec-box {
+  border-color: rgba(255, 59, 92, 0.45);
+  background: rgba(255, 59, 92, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 59, 92, 0.25), 0 6px 16px rgba(255, 59, 92, 0.15);
+}
+
+.hcc-val {
+  font-family: var(--h-font-mono, "JetBrains Mono", monospace);
+  font-size: 26px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.hcc-sec-box .hcc-val {
+  color: #ff859d;
+}
+
+.hcc-lbl {
+  font-size: 10px;
+  font-weight: 750;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.hcc-colon {
+  font-size: 22px;
+  font-weight: 900;
+  color: rgba(163, 133, 255, 0.65);
+  margin: 0 1px;
+  animation: hccBlink 1s infinite;
+}
+
+@keyframes hccBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.hcc-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #673de6 0%, #5227d6 100%);
+  border: 1px solid #9471ff;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13.5px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(103, 61, 230, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.hcc-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(103, 61, 230, 0.55);
+  background: linear-gradient(135deg, #7448f2 0%, #5d31e3 100%);
+  color: #ffffff;
+}
+
+.hcc-btn-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.hcc-action-btn:hover .hcc-btn-arrow {
+  transform: translateY(2px);
+}
+
+@media (max-width: 980px) {
+  .h-countdown-section {
+    margin-top: -12px;
+    padding: 0 0 28px;
+  }
+  .h-countdown-card {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    padding: 24px 20px;
+    gap: 22px;
+  }
+  .hcc-left {
+    max-width: 100%;
+    align-items: center;
+  }
+  .hcc-right {
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+  }
+  .hcc-timer {
+    justify-content: center;
+  }
+  .hcc-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .h-countdown-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+    gap: 16px;
+  }
+  .hcc-title {
+    font-size: 17.5px;
+  }
+  .hcc-sub {
+    font-size: 12.5px;
+  }
+  .hcc-digit-box {
+    min-width: 52px;
+    padding: 7px 8px;
+    border-radius: 10px;
+  }
+  .hcc-val {
+    font-size: 20px;
+  }
+  .hcc-lbl {
+    font-size: 9px;
+  }
+  .hcc-colon {
+    font-size: 16px;
+  }
+  .hcc-action-btn {
+    padding: 11px 18px;
+    font-size: 13px;
+  }
+}
+
+/* ==========================================================================
    4. PRICING & ALL 13 PRODUCTS SECTION (SCREENSHOTS 2 & 3)
    ========================================================================== */
 .h-pricing-section {
