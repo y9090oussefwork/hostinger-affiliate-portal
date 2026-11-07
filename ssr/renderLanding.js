@@ -528,7 +528,6 @@ function renderLandingPage(store, query = {}) {
         <a href="/${lang}" class="h-logo">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h5v7h6V3h5v18h-5v-7H9v7H4V3z"/></svg>
           <span class="h-logo-brand">Host<span class="h-logo-accent">Offers</span></span>
-          <em class="h-partner-badge">${isAr ? "عروض هوستنجر" : "HOSTINGER DEALS"}</em>
         </a>
 
         <nav class="h-nav-menu">
