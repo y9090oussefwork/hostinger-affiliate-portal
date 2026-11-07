@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Allow: /ar/
+Allow: /en/
+Allow: /ae/
+Allow: /sitemap.xml
+Disallow: /go*
+Disallow: /api/*
+Disallow: /admin
+
+Sitemap: https://hostoffers.youssefk.com/sitemap.xml
+
