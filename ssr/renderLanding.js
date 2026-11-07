@@ -877,29 +877,29 @@ function renderLandingPage(store, query = {}) {
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Web Hosting (Single / Premium)</strong></td>
-                    <td><span class="hsc-pill">88% + 20% Off</span></td>
-                    <td><strong>US$1.19 – $1.59/mo</strong></td>
+                    <td class="hsc-td-plan"><strong>Web Hosting (Single / Premium)</strong></td>
+                    <td class="hsc-td-badge"><span class="hsc-pill">88% + 20% Off</span></td>
+                    <td class="hsc-td-price"><strong>US$1.19 – $1.59/mo</strong></td>
                   </tr>
                   <tr>
-                    <td><strong>Unlimited / Business WordPress</strong></td>
-                    <td><span class="hsc-pill">88% + 20% Off</span></td>
-                    <td><strong>US$2.23/mo</strong></td>
+                    <td class="hsc-td-plan"><strong>Unlimited / Business WordPress</strong></td>
+                    <td class="hsc-td-badge"><span class="hsc-pill">88% + 20% Off</span></td>
+                    <td class="hsc-td-price"><strong>US$2.23/mo</strong></td>
                   </tr>
                   <tr>
-                    <td><strong>Cloud Startup / WooCommerce</strong></td>
-                    <td><span class="hsc-pill">77% + 20% Off</span></td>
-                    <td><strong>US$6.39/mo</strong></td>
+                    <td class="hsc-td-plan"><strong>Cloud Startup / WooCommerce</strong></td>
+                    <td class="hsc-td-badge"><span class="hsc-pill">77% + 20% Off</span></td>
+                    <td class="hsc-td-price"><strong>US$6.39/mo</strong></td>
                   </tr>
                   <tr>
-                    <td><strong>VPS KVM 1 / KVM 2 (AMD EPYC)</strong></td>
-                    <td><span class="hsc-pill">74% + 20% Off</span></td>
-                    <td><strong>US$5.19 – $7.03/mo</strong></td>
+                    <td class="hsc-td-plan"><strong>VPS KVM 1 / KVM 2 (AMD EPYC)</strong></td>
+                    <td class="hsc-td-badge"><span class="hsc-pill">74% + 20% Off</span></td>
+                    <td class="hsc-td-price"><strong>US$5.19 – $7.03/mo</strong></td>
                   </tr>
                   <tr>
-                    <td><strong>VPS KVM 4 / KVM 8 Enterprise</strong></td>
-                    <td><span class="hsc-pill">76% + 20% Off</span></td>
-                    <td><strong>US$10.39 – $20.79/mo</strong></td>
+                    <td class="hsc-td-plan"><strong>VPS KVM 4 / KVM 8 Enterprise</strong></td>
+                    <td class="hsc-td-badge"><span class="hsc-pill">76% + 20% Off</span></td>
+                    <td class="hsc-td-price"><strong>US$10.39 – $20.79/mo</strong></td>
                   </tr>
                 </tbody>
               </table>
@@ -927,7 +927,7 @@ function renderLandingPage(store, query = {}) {
       <div class="h-footer-inner">
         <div class="hf-brand-col">
           <div class="hf-brand-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h5v7h6V3h5v18h-5v-7H9v7H4V3z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h5v7h6V3h5v18h-5v-7H9v7H4V3z"/></svg>
             <strong>HOSTINGER</strong>
             <span class="hf-partner-tag">${isAr ? "بوابة عروض الشركاء المعتمدين" : "Authorized Affiliate Partner Portal"}</span>
           </div>
@@ -935,19 +935,29 @@ function renderLandingPage(store, query = {}) {
         </div>
 
         <div class="hf-right">
-          <button type="button" class="hf-legal-btn" data-legal="privacy">${isAr ? "سياسة الخصوصية" : "Privacy Policy"}</button>
-          <button type="button" class="hf-legal-btn" data-legal="terms">${isAr ? "شروط الاستخدام" : "Terms of Use"}</button>
-          <button type="button" class="hf-legal-btn" data-legal="disclosure">${isAr ? "إفصاح الشركاء" : "Affiliate Disclosure"}</button>
+          <div class="hf-legal-links">
+            <button type="button" class="hf-legal-btn" data-legal="privacy">${isAr ? "سياسة الخصوصية" : "Privacy Policy"}</button>
+            <span class="hf-legal-dot">•</span>
+            <button type="button" class="hf-legal-btn" data-legal="terms">${isAr ? "شروط الاستخدام" : "Terms of Use"}</button>
+            <span class="hf-legal-dot">•</span>
+            <button type="button" class="hf-legal-btn" data-legal="disclosure">${isAr ? "إفصاح الشركاء" : "Affiliate Disclosure"}</button>
+          </div>
           <a href="/go?type=general&lang=${lang}" target="_blank" rel="sponsored noopener" class="hf-site-link">${isAr ? "موقع Hostinger الرسمي بالخصم ↗" : "Official Hostinger Site (+20% Off) ↗"}</a>
         </div>
       </div>
 
       <div class="hf-disclosure">
-        ${
-          isAr
-            ? "إفصاح الشركاء والشفافية الإعلانية: هذا الموقع عبارة عن بوابة عروض ترويجية مستقلة تابعة لبرنامج شركاء وإحالات هوستنجر الرسمي (Hostinger Referral & Affiliate Program). عند الشراء عبر الروابط الكاملة الموجودة في هذه الصفحة، يتفعل لك تلقائياً خصم إضافي حصري يصل إلى 20% فوق العروض الرسمية (الخصم مرتبط بالرابط المباشر ولا يُضاف ككود منفصل)، وقد نحصل نحن على عمولة إحالة دون أي تكلفة إضافية عليك. جميع العلامات التجارية والأسماء المذكورة مملوكة لشركة Hostinger International Ltd. وتتم عمليات الدفع والفوترة وضمان استرداد الأموال (30 يوماً) مباشرة عبر الموقع الرسمي الآمن لشركة Hostinger."
-            : "Affiliate & Advertising Disclosure: This website operates as an independent promotional partner portal participating in the official Hostinger Referral & Affiliate Program. When you purchase by opening the full partner links on this page, you automatically receive an extra referral discount (up to 20% off eligible plans — activated exclusively via the link) and we may earn a partner commission at no additional cost to you. All trademarks and brand names belong to Hostinger International Ltd. All checkouts, billing, and the 30-day money-back guarantee are processed directly on Hostinger's official website."
-        }
+        <div class="hf-disc-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>${isAr ? "إفصاح الشركاء والشفافية الإعلانية (Advertising & Affiliate Compliance)" : "Affiliate & Advertising Transparency Disclosure"}</span>
+        </div>
+        <p>
+          ${
+            isAr
+              ? "إفصاح الشركاء والشفافية الإعلانية: هذا الموقع عبارة عن بوابة عروض ترويجية مستقلة تابعة لبرنامج شركاء وإحالات هوستنجر الرسمي (Hostinger Referral & Affiliate Program). عند الشراء عبر الروابط الكاملة الموجودة في هذه الصفحة، يتفعل لك تلقائياً خصم إضافي حصري يصل إلى 20% فوق العروض الرسمية (الخصم مرتبط بالرابط المباشر ولا يُضاف ككود منفصل)، وقد نحصل نحن على عمولة إحالة دون أي تكلفة إضافية عليك. جميع العلامات التجارية والأسماء المذكورة مملوكة لشركة Hostinger International Ltd. وتتم عمليات الدفع والفوترة وضمان استرداد الأموال (30 يوماً) مباشرة عبر الموقع الرسمي الآمن لشركة Hostinger."
+              : "Affiliate & Advertising Disclosure: This website operates as an independent promotional partner portal participating in the official Hostinger Referral & Affiliate Program. When you purchase by opening the full partner links on this page, you automatically receive an extra referral discount (up to 20% off eligible plans — activated exclusively via the link) and we may earn a partner commission at no additional cost to you. All trademarks and brand names belong to Hostinger International Ltd. All checkouts, billing, and the 30-day money-back guarantee are processed directly on Hostinger's official website."
+          }
+        </p>
       </div>
 
       <!-- Designer & Developer Credit -->
