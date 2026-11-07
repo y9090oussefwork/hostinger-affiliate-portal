@@ -1,6 +1,8 @@
 // Server-Side Renderer (SSR) — 1:1 Hostinger Official Design & 13-Product Catalog
 // Matches user's 3 Hostinger screenshots (White Friday Hero, Websites Dark Unlimited Card, VPS MOST POPULAR Card)
 
+const BUILD_VERSION = Date.now().toString(36);
+
 function escapeHtml(str) {
   if (str === null || str === undefined) return "";
   return String(str)
@@ -414,7 +416,65 @@ function renderLandingPage(store, query = {}) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/styles.css?v=${BUILD_VERSION}" />
+  <style id="critical-countdown-css">
+    .h-countdown-section { padding: 0 0 36px; position: relative; z-index: 20; margin-top: -24px; }
+    .h-countdown-card {
+      background: linear-gradient(135deg, #180d3d 0%, #0e0724 60%, #20104a 100%) !important;
+      border: 1px solid rgba(163, 133, 255, 0.32) !important;
+      border-radius: 22px !important;
+      padding: 26px 36px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 32px !important;
+      box-shadow: 0 16px 48px -8px rgba(10, 5, 24, 0.45) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .h-countdown-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #ff0055 0%, #673de6 50%, #00b074 100%);
+    }
+    .hcc-left { display: flex !important; flex-direction: column !important; gap: 8px !important; max-width: 520px !important; text-align: start !important; }
+    .hcc-badge {
+      display: inline-flex !important; align-items: center !important; gap: 6px !important;
+      background: rgba(255, 59, 92, 0.16) !important; border: 1px solid rgba(255, 59, 92, 0.38) !important;
+      color: #ff8ca2 !important; padding: 3px 12px !important; border-radius: 999px !important; font-size: 11.5px !important; font-weight: 800 !important; width: fit-content !important;
+    }
+    .hcc-title { font-size: 21px !important; font-weight: 850 !important; color: #ffffff !important; margin: 0 !important; line-height: 1.35 !important; }
+    .hcc-sub { font-size: 13.5px !important; color: rgba(255, 255, 255, 0.75) !important; line-height: 1.6 !important; margin: 0 !important; }
+    .hcc-right { display: flex !important; align-items: center !important; gap: 24px !important; flex-shrink: 0 !important; }
+    .hcc-timer { display: flex !important; align-items: center !important; gap: 8px !important; direction: ltr !important; }
+    .hcc-digit-box {
+      background: rgba(255, 255, 255, 0.08) !important; border: 1px solid rgba(163, 133, 255, 0.3) !important;
+      border-radius: 14px !important; padding: 10px 14px !important; min-width: 66px !important; display: flex !important;
+      flex-direction: column !important; align-items: center !important; justify-content: center !important;
+    }
+    .hcc-digit-box.hcc-sec-box { border-color: rgba(255, 59, 92, 0.5) !important; background: rgba(255, 59, 92, 0.15) !important; }
+    .hcc-val { font-size: 26px !important; font-weight: 900 !important; color: #ffffff !important; line-height: 1.1 !important; font-family: monospace !important; }
+    .hcc-sec-box .hcc-val { color: #ff859d !important; }
+    .hcc-lbl { font-size: 10px !important; font-weight: 750 !important; color: rgba(255, 255, 255, 0.6) !important; text-transform: uppercase !important; margin-top: 4px !important; }
+    .hcc-colon { font-size: 22px !important; font-weight: 900 !important; color: rgba(163, 133, 255, 0.7) !important; margin: 0 1px !important; }
+    .hcc-action-btn {
+      display: inline-flex !important; align-items: center !important; gap: 8px !important;
+      background: linear-gradient(135deg, #673de6 0%, #5227d6 100%) !important;
+      border: 1px solid #9471ff !important; color: #ffffff !important; font-weight: 800 !important; font-size: 13.5px !important;
+      padding: 13px 22px !important; border-radius: 12px !important; text-decoration: none !important; white-space: nowrap !important;
+    }
+    @media (max-width: 980px) {
+      .h-countdown-card { flex-direction: column !important; text-align: center !important; padding: 22px 18px !important; gap: 20px !important; }
+      .hcc-left { max-width: 100% !important; align-items: center !important; text-align: center !important; }
+      .hcc-right { flex-direction: column !important; width: 100% !important; gap: 16px !important; }
+      .hcc-timer { justify-content: center !important; }
+      .hcc-action-btn { width: 100% !important; justify-content: center !important; }
+    }
+    @media (max-width: 480px) {
+      .h-countdown-card { padding: 18px 12px !important; }
+      .hcc-digit-box { min-width: 52px !important; padding: 7px 8px !important; }
+      .hcc-val { font-size: 20px !important; }
+    }
+  </style>
   <script type="application/ld+json">${buildJsonLd(store, lang)}</script>
   ${gtagHtml}
   ${store.seo?.customHeadHtml || ""}
@@ -1068,7 +1128,7 @@ function renderLandingPage(store, query = {}) {
     window.__INITIAL_CAT__ = ${JSON.stringify(currentCatId)};
     window.__INITIAL_PERIOD__ = ${JSON.stringify(currentPeriod)};
   </script>
-  <script src="/js/app.js"></script>
+  <script src="/js/app.js?v=${BUILD_VERSION}"></script>
 </body>
 </html>`;
 }

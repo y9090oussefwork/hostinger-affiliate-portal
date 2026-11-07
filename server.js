@@ -16,7 +16,16 @@ app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ extended: true }));
 
 // Static assets
-app.use(express.static(path.join(__dirname, "public"), { index: false }));
+app.use(
+  express.static(path.join(__dirname, "public"), {
+    index: false,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith(".css") || filePath.endsWith(".js")) {
+        res.setHeader("Cache-Control", "public, max-age=60, must-revalidate");
+      }
+    }
+  })
+);
 
 // Helper to resolve language (explicit URL param/path > Accept-Language header > store default)
 function resolveLang(req, store, explicitLang) {
