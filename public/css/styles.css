@@ -147,6 +147,23 @@ button {
   font-size: 18px;
   letter-spacing: 0.05em;
   color: #ffffff;
+  text-decoration: none;
+}
+
+.h-logo-brand,
+.hf-logo-brand {
+  font-weight: 900;
+  font-size: 18.5px;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.h-logo-accent,
+.hf-logo-accent {
+  color: #a385ff;
+  font-weight: 900;
 }
 
 .h-nav-menu {

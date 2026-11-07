@@ -527,8 +527,8 @@ function renderLandingPage(store, query = {}) {
       <div class="h-nav-left">
         <a href="/${lang}" class="h-logo">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h5v7h6V3h5v18h-5v-7H9v7H4V3z"/></svg>
-          <span>HOSTINGER</span>
-          <em class="h-partner-badge">${isAr ? "عروض الشركاء" : "PARTNER DEALS"}</em>
+          <span class="h-logo-brand">Host<span class="h-logo-accent">Offers</span></span>
+          <em class="h-partner-badge">${isAr ? "عروض هوستنجر" : "HOSTINGER DEALS"}</em>
         </a>
 
         <nav class="h-nav-menu">
@@ -1064,10 +1064,10 @@ function renderLandingPage(store, query = {}) {
         <div class="hf-brand-col">
           <div class="hf-brand-title">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3h5v7h6V3h5v18h-5v-7H9v7H4V3z"/></svg>
-            <strong>HOSTINGER</strong>
-            <span class="hf-partner-tag">${isAr ? "بوابة عروض الشركاء المعتمدين" : "Authorized Affiliate Partner Portal"}</span>
+            <strong class="hf-logo-brand">Host<span class="hf-logo-accent">Offers</span></strong>
+            <span class="hf-partner-tag">${isAr ? "بوابة عروض هوستنجر المعتمدة" : "Authorized Hostinger Partner Portal"}</span>
           </div>
-          <p class="hf-brand-sub">${isAr ? "خصم إضافي 20% مُفعّل تلقائياً عبر روابط الشراكة المباشرة لجميع باقات هوستنجر الرسمية." : "Extra 20% partner discount automatically applied via direct links across all official Hostinger plans."}</p>
+          <p class="hf-brand-sub">${isAr ? "بوابة عروض وتخفيضات شركاء هوستنجر الرسمية (+20% خصم إضافي مُفعّل تلقائياً عبر الروابط المباشرة)." : "Official Hostinger partner portal with an extra 20% discount automatically applied via direct links."}</p>
         </div>
 
         <div class="hf-right">

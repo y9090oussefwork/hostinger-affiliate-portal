@@ -17,8 +17,8 @@ const CART_KVM_8_12 = "https://www.hostinger.com/ae/cart?product=vps%3Avps_kvm_8
 
 const defaultData = {
   general: {
-    brandNameAr: "HOSTINGER",
-    brandNameEn: "HOSTINGER",
+    brandNameAr: "HostOffers",
+    brandNameEn: "HostOffers",
     referralCode: REF_CODE,
     generalLink: GENERAL_LINK,
     extraDiscountPercent: 20,
